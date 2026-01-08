@@ -48,7 +48,9 @@ The RAPD algorithm jointly optimizes the following metrics:
 
 ---
 
-## ⚙️ Project Structure
+## 📁 Project Structure
+
+
 
 RAPD_Algorithm/
 │
@@ -91,6 +93,8 @@ cd RAPD-Algorithm
 python -m venv venv
 venv\Scripts\activate
 pip install -r requirements.txt
+
+```markdown
 
 🧪 Experimental Evaluation (Planned)
 
