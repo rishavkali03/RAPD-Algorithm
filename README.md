@@ -1,5 +1,5 @@
 # RAPD Algorithm  
-### Rapid Algorithm (RAPD Optimization Algorithm)  
+### (RAPD Optimization Algorithm)  
 **Robust Adaptive Perceived-Detail Driven Multi-Metric Optimization Algorithm**
 
 ---
