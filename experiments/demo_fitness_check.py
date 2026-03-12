@@ -2,6 +2,8 @@ import sys
 import os
 import matplotlib.pyplot as plt
 
+
+
 # Add project root to path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
@@ -10,7 +12,6 @@ from preprocessing.normalization import normalize_image
 from preprocessing.clahe_he import apply_he, apply_clahe, apply_he_clahe
 from optimization.fitness import calculate_fitness
 
-
 def show(title, image, fitness, pos):
     plt.subplot(1, 4, pos)
     plt.imshow(image, cmap="gray")
@@ -18,23 +19,31 @@ def show(title, image, fitness, pos):
     plt.axis("off")
 
 
+
 if __name__ == "__main__":
 
     img_path = "images/Sample.jpg"
 
+
+
+
     # Load & normalize
     original = load_image(img_path, resize_dim=(256, 256), grayscale=True)
     normalized = normalize_image(original)
+
 
     # Generate enhanced versions
     he_img = apply_he(normalized)
     clahe_img = apply_clahe(normalized)
     he_clahe_img = apply_he_clahe(normalized)
 
+
+
     # Compute fitness
     fitness_he = calculate_fitness(original, he_img)
     fitness_clahe = calculate_fitness(original, clahe_img)
     fitness_he_clahe = calculate_fitness(original, he_clahe_img)
+
 
     # Visualization
     plt.figure(figsize=(16, 4))
@@ -45,6 +54,7 @@ if __name__ == "__main__":
 
     plt.tight_layout()
     plt.show()
+
 
     # Print numeric comparison
     print("Fitness comparison:")

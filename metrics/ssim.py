@@ -17,6 +17,7 @@ def calculate_ssim(original, enhanced):
         float: SSIM value (range: -1 to 1, typically 0 to 1)
     """
 
+
     # Convert images to grayscale if they are color
     if len(original.shape) == 3:
         original_gray = cv2.cvtColor(original, cv2.COLOR_BGR2GRAY)
@@ -30,9 +31,9 @@ def calculate_ssim(original, enhanced):
 
     # Compute SSIM
     ssim_value = ssim(
-        original_gray,
-        enhanced_gray,
-        data_range=enhanced_gray.max() - enhanced_gray.min()
-    )
-
+    original_gray,
+    enhanced_gray,
+    data_range=255
+)
     return ssim_value
+

@@ -38,6 +38,8 @@ def calculate_fitness(
             "brightness": 0.15
         }
 
+
+
     # --- Compute quality metrics ---
     psnr_value = calculate_psnr(original_image, enhanced_image)
     ssim_value = calculate_ssim(original_image, enhanced_image)
@@ -50,7 +52,6 @@ def calculate_fitness(
 
     # Penalize excessive brightness deviation
     brightness_penalty = abs(bv_enhanced - bv_original)
-
     # --- Safety handling ---
     # Prevent instability if PSNR becomes infinite
     if psnr_value == float("inf"):
@@ -66,3 +67,5 @@ def calculate_fitness(
     )
 
     return fitness_score
+
+

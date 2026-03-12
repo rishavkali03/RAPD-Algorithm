@@ -1,6 +1,9 @@
 numpy
 opencv-python
+opencv-python-headless
 scikit-image
 matplotlib
 scipy
 pillow
+streamlit
+plotly
