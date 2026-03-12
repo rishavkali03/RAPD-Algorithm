@@ -24,9 +24,9 @@ from utils.visualize import plot_metrics_table
 
 def main():
 
-    # ---------------------------------
+    
     # Load Image
-    # ---------------------------------
+   
     image = cv2.imread("images/Sample.jpg", cv2.IMREAD_GRAYSCALE)
 
     if image is None:
@@ -35,9 +35,9 @@ def main():
 
     print("Image loaded successfully.")
 
-    # ---------------------------------
+   
     # Run RAPD Optimization
-    # ---------------------------------
+   
     best_image, fitness, params, history = rapd_optimize(image)
 
     print("\nBest RAPD Fitness:", round(fitness, 4))
@@ -47,18 +47,18 @@ def main():
     cv2.imwrite("rapd_enhanced_result.jpg", best_image)
     print("Enhanced image saved as rapd_enhanced_result.jpg")
 
-    # ---------------------------------
+   
     # Visualization of RAPD results
-    # ---------------------------------
+   
     plot_fitness_curve(history)
 
     show_image_comparison(image, best_image)
 
     plot_histogram_comparison(image, best_image)
 
-    # ---------------------------------
+    
     # Run Classical Enhancement Methods
-    # ---------------------------------
+    
     he_image = apply_he(image)
 
     clahe_image = apply_clahe(image)
@@ -66,9 +66,9 @@ def main():
     # WCA approximation (temporary)
     wca_image = apply_clahe(image)
 
-    # ---------------------------------
+   
     # Compute Metrics Automatically
-    # ---------------------------------
+    
     metrics = {
 
         "HE": [
@@ -100,9 +100,9 @@ def main():
         ]
     }
 
-    # ---------------------------------
+    
     # Print Metrics in Terminal
-    # ---------------------------------
+    
     for algo, values in metrics.items():
 
         print(f"\n{algo} Metrics")
@@ -115,9 +115,9 @@ def main():
 
         print(f"Brightness Variance: {values[3]:.2f}")
 
-    # ---------------------------------
+    
     # Plot Comparison Charts
-    # ---------------------------------
+   
     plot_algorithm_comparison(metrics)
 
     plot_radar_chart(metrics)

@@ -4,9 +4,9 @@ import numpy as np
 from skimage.metrics import structural_similarity as ssim
 
 
-# -------------------------------------------------
+
 # Apply CLAHE Enhancement
-# -------------------------------------------------
+
 def apply_clahe(image, clip_limit=2.0, tile_grid_size=(8, 8)):
 
     clahe = cv2.createCLAHE(
@@ -19,9 +19,9 @@ def apply_clahe(image, clip_limit=2.0, tile_grid_size=(8, 8)):
     return enhanced
 
 
-# -------------------------------------------------
+
 # PSNR Calculation
-# -------------------------------------------------
+
 def calculate_psnr(original, enhanced):
 
     mse = np.mean((original - enhanced) ** 2)
@@ -34,9 +34,9 @@ def calculate_psnr(original, enhanced):
     return psnr
 
 
-# -------------------------------------------------
+
 # Entropy Calculation
-# -------------------------------------------------
+
 def calculate_entropy(image):
 
     histogram = cv2.calcHist([image], [0], None, [256], [0, 256])
@@ -49,17 +49,17 @@ def calculate_entropy(image):
     return entropy
 
 
-# -------------------------------------------------
+
 # Brightness Variance
-# -------------------------------------------------
+
 def calculate_brightness_variance(image):
 
     return np.var(image)
 
 
-# -------------------------------------------------
+
 # Multi-Metric Fitness Function
-# -------------------------------------------------
+
 def calculate_fitness(original, enhanced):
 
     # SSIM
@@ -98,9 +98,9 @@ def calculate_fitness(original, enhanced):
     return fitness
 
 
-# -------------------------------------------------
+
 # RAPD Optimization
-# -------------------------------------------------
+
 def rapd_optimize(original_image, iterations=20):
 
     best_fitness = float("-inf")

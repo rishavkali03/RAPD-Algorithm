@@ -14,18 +14,18 @@ from metrics.brightness_variance import calculate_brightness_variance
 from preprocessing.clahe_he import apply_he, apply_clahe
 
 
-# --------------------------------------------------
+
 # Page Configuration
-# --------------------------------------------------
+
 st.set_page_config(
     page_title="RAPD AI Enhancement System",
     page_icon="🧠",
     layout="wide"
 )
 
-# --------------------------------------------------
+
 # Title Section
-# --------------------------------------------------
+
 st.markdown(
 """
 # 🧠 RAPD AI Image Enhancement System
@@ -38,9 +38,9 @@ An intelligent image enhancement framework that automatically optimizes
 
 st.divider()
 
-# --------------------------------------------------
+
 # Sidebar
-# --------------------------------------------------
+
 st.sidebar.header("⚙️ Control Panel")
 
 uploaded_file = st.sidebar.file_uploader(
@@ -60,9 +60,9 @@ RAPD Optimization
 """
 )
 
-# --------------------------------------------------
+
 # Main Area
-# --------------------------------------------------
+
 if uploaded_file is not None:
 
     file_bytes = np.asarray(bytearray(uploaded_file.read()), dtype=np.uint8)
@@ -74,9 +74,9 @@ if uploaded_file is not None:
 
             enhanced, fitness, params, history = rapd_optimize(image)
 
-        # --------------------------------------------------
+        
         # Image Comparison
-        # --------------------------------------------------
+        
         st.subheader("🖼️ Visual Enhancement Comparison")
 
         col1, col2 = st.columns(2)
@@ -86,9 +86,9 @@ if uploaded_file is not None:
 
         st.divider()
 
-        # --------------------------------------------------
+        
         # Optimization Metrics
-        # --------------------------------------------------
+        
         st.subheader("📊 Optimization Summary")
 
         c1, c2, c3 = st.columns(3)
@@ -99,9 +99,9 @@ if uploaded_file is not None:
 
         st.divider()
 
-        # --------------------------------------------------
+        
         # Convergence Plot
-        # --------------------------------------------------
+        
         st.subheader("📈 RAPD Convergence Behaviour")
 
         fig_conv = go.Figure()
@@ -124,16 +124,16 @@ if uploaded_file is not None:
 
         st.divider()
 
-        # --------------------------------------------------
+
         # Run Classical Methods
-        # --------------------------------------------------
+        
         he = apply_he(image)
         clahe = apply_clahe(image)
         wca = apply_clahe(image)
 
-        # --------------------------------------------------
+        
         # Compute Metrics
-        # --------------------------------------------------
+       
         metrics = {
 
             "HE":[calculate_psnr(image,he),
@@ -173,9 +173,9 @@ if uploaded_file is not None:
 
         st.divider()
 
-        # --------------------------------------------------
+        
         # Bar Chart
-        # --------------------------------------------------
+       
         st.subheader("📉 Metric Comparison")
 
         df_reset = df.reset_index().melt(id_vars="index")
@@ -198,9 +198,9 @@ if uploaded_file is not None:
 
         st.divider()
 
-        # --------------------------------------------------
+        
         # Radar Chart
-        # --------------------------------------------------
+        
         st.subheader("🧭 Multi-Metric Radar Comparison")
 
         radar = go.Figure()
@@ -225,9 +225,9 @@ if uploaded_file is not None:
 
         st.divider()
 
-        # --------------------------------------------------
+        
         # Download Result
-        # --------------------------------------------------
+        
         st.subheader("📥 Download Enhanced Result")
 
         result_img = cv2.imencode(".png", enhanced)[1].tobytes()
@@ -245,9 +245,9 @@ else:
 
     st.info("Upload an image from the sidebar and run RAPD enhancement.")
 
-# --------------------------------------------------
+
 # Footer
-# --------------------------------------------------
+
 st.markdown("---")
 
 st.markdown(
